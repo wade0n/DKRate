@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DKRateViewController">
+            <connections>
+                <outlet property="messageLbl" destination="sos-Og-z2v" id="19J-cj-XLH"/>
+                <outlet property="rateBtn" destination="UoS-hS-2Ff" id="LMK-v0-tRd"/>
+                <outlet property="rateContainer" destination="AfM-KS-AhC" id="XbZ-IE-iD8"/>
+                <outlet property="view" destination="Unh-Qj-7A9" id="F4Q-jx-Ugf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Unh-Qj-7A9" customClass="DKRateView">
+            <rect key="frame" x="0.0" y="-1" width="280" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your raiting will help us improve our service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="264" translatesAutoresizingMaskIntoConstraints="NO" id="sos-Og-z2v">
+                    <rect key="frame" x="14" y="0.0" width="252" height="74"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqn-ND-0tW">
+                    <rect key="frame" x="0.0" y="127" width="280" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="uEw-I3-DND"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-KS-AhC">
+                    <rect key="frame" x="0.0" y="82" width="280" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="rfO-2W-Nj7"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UoS-hS-2Ff">
+                    <rect key="frame" x="0.0" y="128" width="280" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="1jE-nD-fAg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Rate app">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="rateApp:" destination="-1" eventType="touchUpInside" id="fxm-YN-mfI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UoS-hS-2Ff" firstAttribute="leading" secondItem="Unh-Qj-7A9" secondAttribute="leading" id="BhE-jh-WvD"/>
+                <constraint firstItem="Vqn-ND-0tW" firstAttribute="leading" secondItem="Unh-Qj-7A9" secondAttribute="leading" id="BlP-b6-Sl6"/>
+                <constraint firstAttribute="trailing" secondItem="AfM-KS-AhC" secondAttribute="trailing" id="EtS-az-Cy5"/>
+                <constraint firstItem="AfM-KS-AhC" firstAttribute="leading" secondItem="Unh-Qj-7A9" secondAttribute="leading" id="ILr-Ma-gSt"/>
+                <constraint firstAttribute="trailing" secondItem="Vqn-ND-0tW" secondAttribute="trailing" id="LGC-2U-iX0"/>
+                <constraint firstItem="UoS-hS-2Ff" firstAttribute="top" secondItem="AfM-KS-AhC" secondAttribute="bottom" constant="10" id="Sl8-yZ-pfC"/>
+                <constraint firstItem="sos-Og-z2v" firstAttribute="leading" secondItem="Unh-Qj-7A9" secondAttribute="leading" constant="14" id="bHf-le-GZV"/>
+                <constraint firstItem="UoS-hS-2Ff" firstAttribute="top" secondItem="Vqn-ND-0tW" secondAttribute="bottom" id="gEm-65-p8l"/>
+                <constraint firstAttribute="trailing" secondItem="UoS-hS-2Ff" secondAttribute="trailing" id="hQ9-nY-Fq9"/>
+                <constraint firstAttribute="trailing" secondItem="sos-Og-z2v" secondAttribute="trailing" constant="14" id="icm-Nq-bJH"/>
+                <constraint firstItem="AfM-KS-AhC" firstAttribute="top" secondItem="sos-Og-z2v" secondAttribute="bottom" constant="8" id="kte-jn-aDe"/>
+                <constraint firstItem="sos-Og-z2v" firstAttribute="top" secondItem="Unh-Qj-7A9" secondAttribute="top" id="r4L-RQ-m6N"/>
+                <constraint firstAttribute="bottom" secondItem="UoS-hS-2Ff" secondAttribute="bottom" constant="-10" id="xkk-p7-lDm"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="rateContainer" destination="AfM-KS-AhC" id="4r2-6k-NE0"/>
+            </connections>
+            <point key="canvasLocation" x="635" y="502"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

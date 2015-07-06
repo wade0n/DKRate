@@ -1,0 +1,16 @@
+PODS:
+  - CXAlertView (1.1.0)
+  - iRate (1.11.4)
+  - StarRatingView (1.0.0)
+
+DEPENDENCIES:
+  - CXAlertView
+  - iRate
+  - StarRatingView
+
+SPEC CHECKSUMS:
+  CXAlertView: 7387ca9af81796ab22d26ff2fc3cfcb082f3ee09
+  iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
+  StarRatingView: b500a6795ee2453aaafe29671127cfa84b8e7e58
+
+COCOAPODS: 0.36.3
