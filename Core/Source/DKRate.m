@@ -63,7 +63,10 @@
 }
 #pragma mark - iRate delegate
 - (BOOL)iRateShouldPromptForRating{
-    [self showAlert];
+    if (![[iRate sharedInstance] ratedThisVersion]) {
+        [self showAlert];
+        
+    }
     return NO;
 }
 - (void)showAlert{
@@ -80,7 +83,7 @@
             if (selfCaptured.promoteIfEnoughStars) {
                 selfCaptured.promoteIfEnoughStars(starsNum);
             }
-            [[iRate sharedInstance] ratedThisVersion];
+            [[iRate sharedInstance] setRatedThisVersion:YES];
         }else if (starsNum <= _enoughStars){
             if (selfCaptured.promoteIfLessStars) {
                 selfCaptured.promoteIfLessStars(starsNum);
