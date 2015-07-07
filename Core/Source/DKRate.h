@@ -20,8 +20,11 @@
 @property(nonatomic, strong) NSString *alertMessage;
 @property(nonatomic, strong) NSString *rateBtnTitle;
 @property(nonatomic, strong) NSString *cancelBtnTitle;
-+ (instancetype)sharedInstance;
-- (void)launchApp;
 @property(nonatomic, copy) void (^promoteIfEnoughStars)(CGFloat);
 @property(nonatomic, copy) void (^promoteIfLessStars)(CGFloat);
+
++ (void)openWebBrowser:(NSString *)urlToWeb withTintColor:(UIColor *)tintColor withTitle:(NSString *)titleStr andTextColor:(UIColor *)textColor;
++ (void)openWebBrowser:(NSString *)urlToWeb;
++ (instancetype)sharedInstance;
+- (void)launchApp;;
 @end

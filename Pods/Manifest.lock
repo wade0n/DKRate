@@ -1,16 +1,54 @@
 PODS:
+  - ARChromeActivity (1.0.4)
+  - ARSafariActivity (0.0.3)
+  - AutoScrollLabel (0.4.1)
+  - Chivy (0.4.0):
+    - Chivy/Core (= 0.4.0)
+  - Chivy/Core (0.4.0):
+    - ARChromeActivity
+    - ARSafariActivity
+    - AutoScrollLabel
+    - Chivy/Core-no-arc
+    - DKNavbarBackButton
+    - NJKWebViewProgress
+  - Chivy/Core-no-arc (0.4.0)
   - CXAlertView (1.1.0)
+  - DKNavbarBackButton (0.1.4):
+    - DKNavbarBackButton/core (= 0.1.4)
+  - DKNavbarBackButton/core (0.1.4)
   - iRate (1.11.4)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - StarRatingView (1.0.0)
 
 DEPENDENCIES:
+  - Chivy (from `https://github.com/DZamataev/Chivy.git`, branch `master`)
   - CXAlertView
   - iRate
   - StarRatingView
 
+EXTERNAL SOURCES:
+  Chivy:
+    :branch: master
+    :git: https://github.com/DZamataev/Chivy.git
+
+CHECKOUT OPTIONS:
+  Chivy:
+    :commit: 4dd95baf6d4b83247a6545a73e6c72952fe3312e
+    :git: https://github.com/DZamataev/Chivy.git
+
 SPEC CHECKSUMS:
+  ARChromeActivity: 9064d94803338d3377f3e1013a8e8f4821d7daf1
+  ARSafariActivity: dc358220eae06afe83e7ca0b21ca1b862ef8ae81
+  AutoScrollLabel: afe272014f82c707c9203f1383f3fe4e32443fa2
+  Chivy: 04d37d6671d4139c79d6148cfa74b458b51d1532
   CXAlertView: 7387ca9af81796ab22d26ff2fc3cfcb082f3ee09
+  DKNavbarBackButton: adee21ab468fee2d1a605f421321516157cf6543
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   StarRatingView: b500a6795ee2453aaafe29671127cfa84b8e7e58
 
 COCOAPODS: 0.36.3

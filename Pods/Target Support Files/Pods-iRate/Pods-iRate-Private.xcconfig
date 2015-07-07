@@ -1,6 +1,6 @@
 #include "Pods-iRate.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/iRate" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CXAlertView" "${PODS_ROOT}/Headers/Public/StarRatingView" "${PODS_ROOT}/Headers/Public/iRate"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/iRate" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/ARChromeActivity" "${PODS_ROOT}/Headers/Public/ARSafariActivity" "${PODS_ROOT}/Headers/Public/AutoScrollLabel" "${PODS_ROOT}/Headers/Public/CXAlertView" "${PODS_ROOT}/Headers/Public/Chivy" "${PODS_ROOT}/Headers/Public/DKNavbarBackButton" "${PODS_ROOT}/Headers/Public/NJKWebViewProgress" "${PODS_ROOT}/Headers/Public/StarRatingView" "${PODS_ROOT}/Headers/Public/iRate"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}
 SKIP_INSTALL = YES

@@ -9,7 +9,7 @@
 #import "DKRate.h"
 #import "CXAlertView.h"
 #import "DKRateView.h"
-
+#import "Chivy.h"
 #import "StarRatingView.h"
 
 @interface DKRate (){
@@ -40,10 +40,14 @@
         self.alertMessage = @"Please help our app and rate it";
         self.cancelBtnTitle = @"Not now";
         self.rateBtnTitle = @"Rate";
-        //[iRate sharedInstance].previewMode = YES;
+        DKRate *selfCaptured = self;
+        [iRate sharedInstance].previewMode = YES;
         _enoughStars = 3.0f;
         [self setPromoteIfEnoughStars:^(CGFloat stars) {
             [[iRate sharedInstance] openRatingsPageInAppStore];
+        }];
+        [self setPromoteIfLessStars:^(CGFloat stars) {
+            [DKRate openWebBrowser:@"https://github.com/wade0n/DKRate"];
         }];
         
         
@@ -128,5 +132,90 @@
     [iRate sharedInstance].eventsUntilPrompt = 10;
     [iRate sharedInstance].usesCount = 0;
 }
-#pragma mark setting blocks
+#pragma mark openUrl
++ (void)openWebBrowser:(NSString *)urlToWeb
+{
+    NSURL *urlToOpen = [CHWebBrowserViewController URLWithString:urlToWeb];
+    CHWebBrowserViewController *webBrowserVC = [CHWebBrowserViewController webBrowserControllerWithDefaultNibAndHomeUrl:urlToOpen];
+    webBrowserVC.cAttributes.titleScrollingSpeed = 10.0f;
+    webBrowserVC.cAttributes.animationDurationPerOnePixel = 0.0008f; // faster animation on hiding bars
+    webBrowserVC.cAttributes.titleTextAlignment = NSTextAlignmentLeft;
+    webBrowserVC.cAttributes.isProgressBarEnabled = YES;
+    webBrowserVC.cAttributes.isHidingBarsOnScrollingEnabled = NO;
+    webBrowserVC.cAttributes.isReadabilityButtonHidden = YES;
+    webBrowserVC.cAttributes.shouldAutorotate = NO;
+    webBrowserVC.cAttributes.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscape;
+    
+    /*
+     let's use google chrome URI scheme which provides callback url.
+     we should specify only 'x-success' parameter using webBrowserViewController property
+     the 'x-source' would be taken from 'CFBundleName' in InfoPlist.strings
+     */
+    NSURL *callbackURL = [NSURL URLWithString:@"returned-from-chrome"];
+    webBrowserVC.chromeActivityCallbackUrl = callbackURL;
+    
+    [webBrowserVC setOnDismissCallback:^(CHWebBrowserViewController *webBrowser) {
+        NSLog(@"dismiss callback trigerred");
+    }];
+    
+    [CHWebBrowserViewController openWebBrowserController:webBrowserVC
+                                          modallyWithUrl:[CHWebBrowserViewController URLWithString:urlToWeb]
+                                                animated:YES
+                                       showDismissButton:NO
+                                              completion:^{
+                                                  NSLog(@"Modal animation completed");
+                                              }];
+    
+    
+    float delayInSeconds = 5.0f;
+    NSLog(@"Dismiss button will appear in %f seconds. Please wait.", delayInSeconds);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        webBrowserVC.shouldShowDismissButton = YES;
+    });
+}
++ (void)openWebBrowser:(NSString *)urlToWeb withTintColor:(UIColor *)tintColor withTitle:(NSString *)titleStr andTextColor:(UIColor *)textColor{
+    NSURL *urlToOpen = [CHWebBrowserViewController URLWithString:urlToWeb];
+    CHWebBrowserViewController *webBrowserVC = [CHWebBrowserViewController webBrowserControllerWithDefaultNibAndHomeUrl:urlToOpen];
+    webBrowserVC.cAttributes.titleScrollingSpeed = 10.0f;
+    webBrowserVC.cAttributes.animationDurationPerOnePixel = 0.0008f; // faster animation on hiding bars
+    webBrowserVC.cAttributes.titleTextAlignment = NSTextAlignmentLeft;
+    webBrowserVC.cAttributes.isProgressBarEnabled = YES;
+    webBrowserVC.cAttributes.isHidingBarsOnScrollingEnabled = NO;
+    webBrowserVC.cAttributes.isReadabilityButtonHidden = YES;
+    webBrowserVC.cAttributes.shouldAutorotate = NO;
+    webBrowserVC.cAttributes.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscape;
+    
+    /*
+     let's use google chrome URI scheme which provides callback url.
+     we should specify only 'x-success' parameter using webBrowserViewController property
+     the 'x-source' would be taken from 'CFBundleName' in InfoPlist.strings
+     */
+    NSURL *callbackURL = [NSURL URLWithString:@"returned-from-chrome"];
+    webBrowserVC.chromeActivityCallbackUrl = callbackURL;
+    webBrowserVC.title = titleStr;
+    webBrowserVC.cAttributes.toolbarTintColor = tintColor;
+    webBrowserVC.cAttributes.titleTextColor = textColor;
+    
+    [webBrowserVC setOnDismissCallback:^(CHWebBrowserViewController *webBrowser) {
+        NSLog(@"dismiss callback trigerred");
+    }];
+    
+    [CHWebBrowserViewController openWebBrowserController:webBrowserVC
+                                          modallyWithUrl:[CHWebBrowserViewController URLWithString:urlToWeb]
+                                                animated:YES
+                                       showDismissButton:NO
+                                              completion:^{
+                                                  NSLog(@"Modal animation completed");
+                                              }];
+    
+    
+    float delayInSeconds = 5.0f;
+    NSLog(@"Dismiss button will appear in %f seconds. Please wait.", delayInSeconds);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        webBrowserVC.shouldShowDismissButton = YES;
+    });
+
+}
 @end

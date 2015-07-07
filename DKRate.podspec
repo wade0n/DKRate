@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
     c.dependency  'StarRatingView'
     c.dependency  'CXAlertView'
     c.dependency  'iRate'
+    c.dependency  'Chivy'
   end
 
 end
