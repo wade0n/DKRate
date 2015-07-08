@@ -41,7 +41,7 @@
         self.cancelBtnTitle = @"Not now";
         self.rateBtnTitle = @"Rate";
         DKRate *selfCaptured = self;
-        [iRate sharedInstance].previewMode = YES;
+        //[iRate sharedInstance].previewMode = YES;
         _enoughStars = 3.0f;
         [self setPromoteIfEnoughStars:^(CGFloat stars) {
             [[iRate sharedInstance] openRatingsPageInAppStore];
@@ -175,6 +175,7 @@
     });
 }
 + (void)openWebBrowser:(NSString *)urlToWeb withTintColor:(UIColor *)tintColor withTitle:(NSString *)titleStr andTextColor:(UIColor *)textColor{
+    
     NSURL *urlToOpen = [CHWebBrowserViewController URLWithString:urlToWeb];
     CHWebBrowserViewController *webBrowserVC = [CHWebBrowserViewController webBrowserControllerWithDefaultNibAndHomeUrl:urlToOpen];
     webBrowserVC.cAttributes.titleScrollingSpeed = 10.0f;
@@ -184,7 +185,15 @@
     webBrowserVC.cAttributes.isHidingBarsOnScrollingEnabled = NO;
     webBrowserVC.cAttributes.isReadabilityButtonHidden = YES;
     webBrowserVC.cAttributes.shouldAutorotate = NO;
+    webBrowserVC.titleLabel.text = titleStr;
     webBrowserVC.cAttributes.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscape;
+    UIColor *previousWindowTintColor = [UIApplication sharedApplication].keyWindow.tintColor.copy;
+    [UIApplication sharedApplication].keyWindow.tintColor = tintColor;
+    [webBrowserVC setOnDismissCallback:^(CHWebBrowserViewController *webBro) {
+        [UIApplication sharedApplication].keyWindow.tintColor = previousWindowTintColor;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    }];
+    
     
     /*
      let's use google chrome URI scheme which provides callback url.
@@ -204,10 +213,8 @@
     [CHWebBrowserViewController openWebBrowserController:webBrowserVC
                                           modallyWithUrl:[CHWebBrowserViewController URLWithString:urlToWeb]
                                                 animated:YES
-                                       showDismissButton:NO
-                                              completion:^{
-                                                  NSLog(@"Modal animation completed");
-                                              }];
+                                       showDismissButton:YES
+                                              completion:nil];
     
     
     float delayInSeconds = 5.0f;
@@ -216,6 +223,5 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         webBrowserVC.shouldShowDismissButton = YES;
     });
-
 }
 @end
