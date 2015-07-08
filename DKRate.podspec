@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.subspec 'core' do |c|
     c.requires_arc = true
     c.source_files = 'core/Source/*'
-    c.resources = 'core/Resources/*'
+    c.resources = 'core/Resource/*'
     c.dependency  'StarRatingView'
     c.dependency  'CXAlertView'
     c.dependency  'iRate'
