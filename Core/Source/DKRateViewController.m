@@ -50,7 +50,7 @@
     [_ratingView setRateEnabled:YES];
     _ratingView.backgroundColor = [UIColor clearColor];
     [rateContainer addSubview:_ratingView];
-    [_ratingView displayRating:4.0f];
+    [_ratingView displayRating:5.0f];
     //[rateBtn addTarget:self action:@selector(rateApp:) forControlEvents:UIControlEventTouchUpInside];
 }
 
